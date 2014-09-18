@@ -1,0 +1,4 @@
+db.driver=org.postgresql.Driver
+db.url=jdbc:postgresql://localhost/ai
+db.user=ai
+db.password=ai
