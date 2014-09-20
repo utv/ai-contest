@@ -15,8 +15,6 @@ class HelloWorld {
     
   Class.forName("org.postgresql.Driver")
   implicit def conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ai", "ai", "ai")
-
-
   
 //  val p = sql("select name from users where id > ? and name=?").apply(2, "James")
 //  val q = sql("select name from users where id > ?").apply(1)
