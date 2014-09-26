@@ -8,6 +8,8 @@
     <div id="main" class="lift:surround?with=default;at=content">
       <head_merge>
         <script type="text/javascript" src="/scripts/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="/js/jquery-1.11.1.min.js" id="jquery">
+        </script>
       </head_merge>
       <h2>Welcome to your project!</h2>
       
@@ -16,10 +18,27 @@
         <p><span id="answer">firstname here </span></p>
       </span>
 
-
-      <div data-lift="Popup.displayModal">
-        <span id="clickable_span">Display modal dialog</span>
+      <span id="open_new_game_screen">New Game</span>
+      <div id="new_game">
+        <div class="lift:UploadScreen"></div>
       </div>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $("#new_game").hide();
+
+          $("#open_new_game_screen").click(function() {
+            $("#new_game").show();
+          });
+
+        });
+      </script>
+      <!-- <div data-lift="Popup.displayModal">
+        <span id="clickable_span">Display modal dialog</span>
+      </div> -->
+
+
+      <!-- <div class="lift:UploadScreen"></div> -->
       <!-- <span data-lift="JSDialog.button">Display modal dialog</span> -->
     </div>
   </body>
