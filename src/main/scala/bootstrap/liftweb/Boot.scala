@@ -82,5 +82,10 @@ class Boot {
 
     // Make a transaction span the whole HTTP request
     S.addAround(DB.buildLoanWrapper)
+
+    // Set size of file upload limit
+    LiftRules.maxMimeFileSize = 40000000L
+    LiftRules.maxMimeSize = 40000000L
+    LiftRules.handleMimeFile = OnDiskFileParamHolder.apply
   }
 }
