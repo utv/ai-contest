@@ -37,7 +37,9 @@ libraryDependencies ++= {
     "org.specs2"        %% "specs2"             % "1.14"             % "test",
     "com.h2database"    % "h2"                  % "1.3.167",
     "postgresql" % "postgresql" % "8.4-701.jdbc4",
-    "fi.reaktor" % "sqltyped_2.10" % "0.4.0",
+    "fi.reaktor" %% "sqltyped" % "0.4.0",
+    "fi.reaktor" %% "sqltyped-json4s" % "0.4.0",
+    "com.typesafe" %% "slick" % "1.0.0-RC1",
     "net.lingala.zip4j" % "zip4j" % "1.3.2"
   )
 }
