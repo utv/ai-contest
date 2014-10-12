@@ -18,7 +18,13 @@ class HelloWorld {
                       ("first_param" -> "358") ::
                       ("second_param" -> "Something with spaces") :: Nil)
 
-  def howdy = "#time *" #> date.map(_.toString) & "#answer *+" #> Db.myFirstname(0)
+  val list = Db.listGame(1) get "name"
+  // def howdy = "#time *" #> date.map(_.toString) & "#answer *+" #> Db.myFirstname(0)
+  def howdy = "#time *" #> date.map(_.toString) & "#answer *+" #> list
   def links = "a *" #> "This is the link text"& "a [href]" #> url
   def render = "* *" #> "render hello"
+
+  def listGame = {
+  	
+  }
 }
