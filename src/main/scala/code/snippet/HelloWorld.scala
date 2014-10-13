@@ -10,6 +10,7 @@ import Helpers._
 import java.sql._
 import scala.slick.session.Database
 import sqltyped._
+import net.liftweb.mapper._
 
 class HelloWorld {
   
@@ -19,12 +20,10 @@ class HelloWorld {
                       ("second_param" -> "Something with spaces") :: Nil)
 
   val list = Db.listGame(1) get "name"
-  // def howdy = "#time *" #> date.map(_.toString) & "#answer *+" #> Db.myFirstname(0)
-  def howdy = "#time *" #> date.map(_.toString) & "#answer *+" #> list
+  val showList = Db.listGame
+
+  def howdy = "#time *" #> date.map(_.toString)
   def links = "a *" #> "This is the link text"& "a [href]" #> url
   def render = "* *" #> "render hello"
 
-  def listGame = {
-  	
-  }
 }
