@@ -18,8 +18,7 @@ object Db {
 
   def listGame = 
     db withSession {
-      sql("select games.name, count(tourn_gameindex.tourn_id) " +
-        "from games left join tourn_gameindex on games.id = tourn_gameindex.gameid group by games.name")apply()
+      sql("select games.id, games.name, count(tourn_gameindex.tourn_id) as numOfTournament from games left join tourn_gameindex on games.id = tourn_gameindex.gameid group by games.id, games.name")apply()
     }
 
 }

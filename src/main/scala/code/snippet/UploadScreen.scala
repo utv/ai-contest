@@ -3,8 +3,6 @@ package code.snippet
 // import net.liftweb.http._
 // import net.liftweb.util._
 import java.io.{File, FileOutputStream}
-import java.nio.file.{Files, Path, Paths}
-
 
 import net.liftweb._
 import http._
