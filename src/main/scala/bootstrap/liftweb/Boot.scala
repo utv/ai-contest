@@ -45,7 +45,7 @@ class Boot {
     def sitemap = SiteMap(
       Menu.i("Home") / "index" >> User.AddUserMenusAfter, // the simple way to declare a menu
       //Menu("mains", S ? "Main") / "main" >> Hidden,
-      Menu.i("main") / "main" >> Hidden,
+      Menu.i("list Games") / "gameList" >> Hidden,
       // more complex because this menu allows anything in the
       // /static path to be visible
       Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
