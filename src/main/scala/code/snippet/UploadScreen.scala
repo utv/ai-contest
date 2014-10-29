@@ -15,7 +15,7 @@ class UploadScreen extends LiftScreen {
   override protected def hasUploadField = true
   
   var upload : Box[FileParamHolder] = Empty
-  val urlAfterSubmission = "/static/index"
+  val urlAfterSubmission = "/index"
   
   // Fields on LiftScreen
   val gameName = field("Name", "", "placeholder" -> "Name of new game")

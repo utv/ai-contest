@@ -15,7 +15,7 @@ import JsCmds._
 class Popup {
   def displayModal = {
     /*"#clickable_span [onclick]" #> 
-      SHtml.ajaxInvoke(() => ModalDialog(<div class={"lift:SinglePageForm"}></div>))*/
+      SHtml.ajaxInvoke(() => ModalDialog(<div class={"lift:UploadScreen?ajax=true"}></div>))*/
     "#clickable_span [onclick]" #> 
       SHtml.onEvent(s => ModalDialog(<div class={"lift:UploadScreen?ajax=true"}></div>))
     
