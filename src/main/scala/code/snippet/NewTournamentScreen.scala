@@ -1,9 +1,6 @@
 package code.snippet
 
-// import net.liftweb.http._
-// import net.liftweb.util._
 import java.io.{File, FileOutputStream}
-
 import net.liftweb._
 import http._
 import common._
@@ -14,6 +11,7 @@ import net.liftweb.util.Helpers._
 
 class NewTournamentScreen extends LiftScreen {
 
+  // This is how we pass param "id" to LIftScreen and stored in "id" object
   object id extends ScreenVar[Box[String]](Empty)
   override def localSetup() {
     id.set(S.param("id"))
@@ -21,16 +19,14 @@ class NewTournamentScreen extends LiftScreen {
   }
   
   // Fields on LiftScreen
-  val tournamentName = field("Name", "", "placeholder" -> "Name of new tournament")
-  val passwd = password("Password", "", "placeholder" -> "Password for new tournament")
+  val tournamentName = field("Name", "", "placeholder" -> "")
+  val passwd = password("Password", "", "placeholder" -> "")
   // override def finishButton = <button>Save</button>
 
-
   def finish() {
-    // addTournament(gameId: Int, name: String, password: String)
-    val gameId = id openOr ""
-    val urlAfterSubmission = appendParams("tournamentList", Seq("id" -> gameId))
-    Db.addTournament(gameId.toInt, tournamentName, passwd)
-    S.redirectTo(urlAfterSubmission)
+      val gameId = id openOr ""
+      // addTournament(gameId: Int, name: String, password: String)
+      Db.addTournament(gameId.toInt, tournamentName, passwd)
+      S.redirectTo(appendParams("tournamentList", Seq("id" -> gameId)))
   }
 }

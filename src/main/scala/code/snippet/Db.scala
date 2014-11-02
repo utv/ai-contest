@@ -15,17 +15,23 @@ object Db {
       sql("insert into games (creator_id, name) values (?,?)")apply(
         Some(User.currentUserId.get.toInt), Some(gameName))
     }
-
-  def addTournament(gameId: Int, name: String, password: String) = {
+  
+  def addTournament(gameId: Int, name: String, password: String) = 
     db withTransaction {
       sql("insert into tournaments (creator_id, game_id, name, password) values (?,?,?,?)")apply(
         Some(User.currentUserId.get.toInt), Some(gameId), Some(name), Some(password))
     }
-  }
 
   def listGame = 
     db withSession {
-      sql("select games.id, games.name, count(tourn_gameindex.tourn_id) as numOfTournament from games left join tourn_gameindex on games.id = tourn_gameindex.gameid group by games.id, games.name")apply()
+      sql("select games.id, games.name, count(tourn_gameindex.tourn_id) as numOfTournament " +
+        "from games left join tourn_gameindex on games.id = tourn_gameindex.gameid group by games.id, games.name")apply()
+    }
+
+  def listTournament(gameId: Int) = 
+    db withSession {
+      sql("select tournaments.id, tournaments.name as tournament_name, users.firstname as creator from users, tournaments " +
+        "where tournaments.creator_id = users.id and tournaments.game_id=?")apply(Some(gameId))
     }
 
 }
