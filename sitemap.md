@@ -1,6 +1,7 @@
 =========== Create new game, tournament and bots ===========
 games.html --choose new game--> 
 newGame.html --create new game--> 
+tournaments.html --choose new tournament-->
 newTournament.html --create new tournament-->
 tournament.html --choose upload bot-->
 uploadBot.html --choose new bot-->
@@ -19,29 +20,40 @@ tournaments.html --choose a tournament-->
 tournament.html --upload bot-->
 uploadBot.html --choose a bot from bot list--> confirm -->
 tournament.html
+===============================================================
 
-=========== Breadcrumb ===========
-Game --> Tournament -->
-==================================
-
-
-uploadBot.html
-- New bot link
-- Bot list table
-
-newBot.html(Form)
+newGame(Form)
+- Breadcrumb, game --> new game
 - Name
 - File upload
 
+newTournament(Form)
+- Breadcrumb, game --> new tournament
+- Name
+- Password
+
+newBot.html(Form)
+- Breadcrumb, game --> tournament --> new bot
+- Name
+- File upload
+
+uploadBot.html
+- Breadcrumb, game --> tournament --> upload bot
+- New bot link
+- Bot list table
+
 games.html
+- Breadcrumb, game -->
 - New game link
 - Game list table
 
 tournaments.html
+- Breadcrumb, game --> list of tournaments
 - New tournament
 - Tournament list table
 
 tournament.html
+- Breadcrumb, game --> tournament name
 - upload bot
 - leader board
 - matches
