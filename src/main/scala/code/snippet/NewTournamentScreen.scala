@@ -24,9 +24,9 @@ class NewTournamentScreen extends LiftScreen {
   // override def finishButton = <button>Save</button>
 
   def finish() {
-      val gameId = id openOr ""
-      // addTournament(gameId: Int, name: String, password: String)
-      Db.addTournament(gameId.toInt, tournamentName, passwd)
-      S.redirectTo(appendParams("tournamentList", Seq("id" -> gameId)))
+    val gameId = id openOr ""
+    // addTournament(gameId: Int, name: String, password: String)
+    Db.addTournament(gameId.toInt, tournamentName, passwd)
+    S.redirectTo(appendParams("tournamentList", Seq("id" -> gameId)))
   }
 }
