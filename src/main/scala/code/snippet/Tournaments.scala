@@ -4,7 +4,7 @@ import net.liftweb.http._
 import net.liftweb.util.Helpers._
 import net.liftweb.mapper._
 
-class TournamentList {
+class Tournaments {
   val listOfTournaments = Db.listTournament(S.param("id").get.toInt)
   val id = S.param("id") openOr ""
 

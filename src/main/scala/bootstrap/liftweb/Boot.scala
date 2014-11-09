@@ -47,8 +47,8 @@ class Boot {
       //Menu("mains", S ? "Main") / "main" >> Hidden,
       Menu.i("New Game") / "newGame" >> Hidden,
       Menu.i("New Tournament") / "newTournament" >> Hidden,
-      Menu.i("List Games") / "gameList" >> Hidden,
-      Menu.i("List Tournament") / "tournamentList" >> Hidden,
+      Menu.i("Games") / "games",
+      Menu.i("List Tournaments") / "tournaments" >> Hidden,
       // more complex because this menu allows anything in the
       // /static path to be visible
       Menu(Loc("Static", Link(List("static"), true, "/static/index"), 

@@ -3,7 +3,7 @@ package code.snippet
 import net.liftweb.util.Helpers._
 import net.liftweb.mapper._
 
-class GameList {
+class Games {
 
   /*val (fieldNames: List[String], fieldValues: List[List[String]]) = 
     DB.runQuery("select games.name, count(tourn_gameindex.tourn_id) " +
@@ -17,7 +17,7 @@ class GameList {
     "tbody tr *" #> 
       listOfGames.map(values => { 
         "a *" #> values.get("name")  &
-        "a [href]" #> appendParams("tournamentList", Seq("id" -> values.get("id").toString)) & // values.get("id") &
+        "a [href]" #> appendParams("tournaments", Seq("id" -> values.get("id").toString)) & // values.get("id") &
         "@numOfTournament *" #> values.get("numOfTournament")
       })
   }
