@@ -1,6 +1,6 @@
 ﻿create table Bots(
 	id serial primary key,
-	owner_id integer,
+	creator_id integer,
 	name text unique,
 	language text
 );

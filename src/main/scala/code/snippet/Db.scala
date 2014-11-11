@@ -15,6 +15,12 @@ object Db {
       sql("insert into games (creator_id, name) values (?,?)")apply(
         Some(User.currentUserId.get.toInt), Some(gameName))
     }
+
+  def addBot(botName: String) = 
+    db withTransaction {
+      sql("insert into bots (creator_id, name) values (?,?)")apply(
+        Some(User.currentUserId.get.toInt), Some(botName))
+    }
   
   def addTournament(gameId: Int, name: String, password: String) = 
     db withTransaction {

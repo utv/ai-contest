@@ -10,23 +10,42 @@ import net.lingala.zip4j.core.ZipFile
 import net.liftweb.util.Helpers._
 
 class NewBot extends LiftScreen {
+  override protected def hasUploadField = true
 
   // This is how we pass param "id" to LIftScreen and stored in "id" object
   object id extends ScreenVar[Box[String]](Empty)
   override def localSetup() {
-    id.set(S.param("id"))
+    id.set(S.param("tourn_id"))
     super.localSetup()
   }
-  
+
+  var upload : Box[FileParamHolder] = Empty  
   // Fields on LiftScreen
-  val tournamentName = field("Name", "", "placeholder" -> "")
-  val passwd = password("Password", "", "placeholder" -> "")
-  // override def finishButton = <button>Save</button>
+  val botName = field("Name", "", "placeholder" -> "")
+  val uploadFile = makeField[Array[Byte], Nothing]("File", new Array[Byte](0),
+    field => SHtml.fileUpload(fph => upload = Full(fph)), NothingOtherValueInitializer)
+
+  def processUpload() = upload match {
+    case Full(FileParamHolder(_, mimeType, fileName, file)) => 
+      val botDir = "bots"
+      try { 
+        val oFile = new File(botDir, fileName)
+        val output = new FileOutputStream(oFile)
+        output.write(file)
+        output.close()
+        
+        // unzipFile(oFile.getAbsolutePath(), gameDir)
+        Db.addBot(botName)
+      } catch {
+        case e: Exception => e.printStackTrace; println(e)
+      }
+      S.notice("Thanks for the upload")
+    case _ => println("No file?")
+  }
 
   def finish() {
-    val gameId = id openOr ""
-    // addTournament(gameId: Int, name: String, password: String)
-    Db.addTournament(gameId.toInt, tournamentName, passwd)
-    S.redirectTo(appendParams("tournaments", Seq("id" -> gameId)))
+    processUpload
+    val tournamentId = id openOr ""
+    S.redirectTo(appendParams("tournament", Seq("tourn_id" -> tournamentId)))
   }
 }
