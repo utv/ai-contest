@@ -5,15 +5,15 @@ import net.liftweb.util.Helpers._
 import net.liftweb.mapper._
 
 class Tournaments {
-  val listOfTournaments = Db.listTournament(S.param("id").get.toInt)
-  val id = S.param("id") openOr ""
+  val id = S.param("game_id") openOr ""
+  val listOfTournaments = Db.listTournament(id.toInt)
 
   def render = {
-    "a [href]" #> appendParams("newTournament", Seq("id" -> id)) &
+    "a [href]" #> appendParams("newTournament", Seq("game_id" -> id)) &
     "tbody tr *" #> 
       listOfTournaments.map(values => { 
         "a *" #> values.get("tournament_name")  &
-        "a [href]" #> appendParams("tournamentDetail", Seq("id" -> values.get("id").toString)) & // values.get("id") &
+        "a [href]" #> appendParams("tournament", Seq("tourn_id" -> values.get("tourn_id").toString)) &
         "@creator *" #> values.get("creator")
       })
   }

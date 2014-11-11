@@ -25,7 +25,7 @@ class Games {
     "tbody tr *" #> 
       listOfGames.map(values => { 
         "a *" #> values.get("name")  &
-        "a [href]" #> appendParams("tournaments", Seq("id" -> values.get("id").toString)) & // values.get("id") &
+        "a [href]" #> appendParams("tournaments", Seq("game_id" -> values.get("game_id").toString)) & // values.get("id") &
         "@numOfTournament *" #> values.get("numOfTournament")
       })
   }

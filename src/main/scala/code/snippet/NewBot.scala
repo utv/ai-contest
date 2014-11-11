@@ -9,12 +9,12 @@ import net.lingala.zip4j.exception.ZipException
 import net.lingala.zip4j.core.ZipFile
 import net.liftweb.util.Helpers._
 
-class NewTournamentScreen extends LiftScreen {
+class NewBot extends LiftScreen {
 
   // This is how we pass param "id" to LIftScreen and stored in "id" object
   object id extends ScreenVar[Box[String]](Empty)
   override def localSetup() {
-    id.set(S.param("game_id"))
+    id.set(S.param("id"))
     super.localSetup()
   }
   
@@ -27,6 +27,6 @@ class NewTournamentScreen extends LiftScreen {
     val gameId = id openOr ""
     // addTournament(gameId: Int, name: String, password: String)
     Db.addTournament(gameId.toInt, tournamentName, passwd)
-    S.redirectTo(appendParams("tournaments", Seq("game_id" -> gameId)))
+    S.redirectTo(appendParams("tournaments", Seq("id" -> gameId)))
   }
 }

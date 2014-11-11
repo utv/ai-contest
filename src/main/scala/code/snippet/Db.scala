@@ -24,13 +24,13 @@ object Db {
 
   def listGame = 
     db withSession {
-      sql("select games.id, games.name, count(tourn_gameindex.tourn_id) as numOfTournament " +
+      sql("select games.id as game_id, games.name, count(tourn_gameindex.tourn_id) as numOfTournament " +
         "from games left join tourn_gameindex on games.id = tourn_gameindex.gameid group by games.id, games.name")apply()
     }
 
   def listTournament(gameId: Int) = 
     db withSession {
-      sql("select tournaments.id, tournaments.name as tournament_name, users.firstname as creator from users, tournaments " +
+      sql("select tournaments.id as tourn_id, tournaments.name as tournament_name, users.firstname as creator from users, tournaments " +
         "where tournaments.creator_id = users.id and tournaments.game_id=?")apply(Some(gameId))
     }
 
