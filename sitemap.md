@@ -37,10 +37,12 @@ newBot.html(Form)
 - Name
 - File upload
 
-uploadBot.html
-- Breadcrumb, game --> tournament --> upload bot
-- New bot link
+chooseBot.html(Do it later)
+- Breadcrumb, game --> tournament --> choose bot
 - Bot list table
+  - bot name
+  - tournament name
+  - upload date
 
 games.html
 - Breadcrumb, game -->
@@ -54,6 +56,12 @@ tournaments.html
 
 tournament.html
 - Breadcrumb, game --> tournament name
-- upload bot
+- New bot link
+- Choose bot link(choose existing bot from this game)
 - leader board
+  - Rank
+  - Bot name
+  - Win
+  - Lose
+  - Number of games played
 - matches

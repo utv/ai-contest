@@ -51,6 +51,7 @@ class Boot {
       Menu.i("List Tournaments") / "tournaments" >> Hidden,
       Menu.i("Tournament") / "tournament" >> Hidden,
       Menu.i("New Bot") / "newBot" >> Hidden,
+      Menu.i("Choose Bot") / "chooseBot" >> Hidden,
       // more complex because this menu allows anything in the
       // /static path to be visible
       Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
