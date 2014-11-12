@@ -25,7 +25,7 @@ class NewBot extends LiftScreen {
   val uploadFile = makeField[Array[Byte], Nothing]("File", new Array[Byte](0),
     field => SHtml.fileUpload(fph => upload = Full(fph)), NothingOtherValueInitializer)
 
-  def processUpload() = upload match {
+  def processUpload(tournamentId: String) = upload match {
     case Full(FileParamHolder(_, mimeType, fileName, file)) => 
       val botDir = "bots"
       try { 
@@ -35,7 +35,8 @@ class NewBot extends LiftScreen {
         output.close()
         
         // unzipFile(oFile.getAbsolutePath(), gameDir)
-        Db.addBot(botName)
+        Db.addBot(tournamentId.toInt, botName)
+
       } catch {
         case e: Exception => e.printStackTrace; println(e)
       }
@@ -44,8 +45,8 @@ class NewBot extends LiftScreen {
   }
 
   def finish() {
-    processUpload
     val tournamentId = id openOr ""
+    processUpload(tournamentId)
     S.redirectTo(appendParams("tournament", Seq("tourn_id" -> tournamentId)))
   }
 }

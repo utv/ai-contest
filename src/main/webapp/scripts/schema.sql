@@ -42,7 +42,7 @@ create table Tourn_Games(
                     draws INTEGER DEFAULT 0
                 );
 
-create table Tourn_Entries(
+create table Tourn_Bots(
                     id SERIAL PRIMARY KEY,
                     tourn_id INTEGER,
                     bot_id INTEGER,

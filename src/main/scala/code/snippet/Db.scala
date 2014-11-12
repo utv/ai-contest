@@ -16,10 +16,14 @@ object Db {
         Some(User.currentUserId.get.toInt), Some(gameName))
     }
 
-  def addBot(botName: String) = 
+  def addBot(tournamentId: Int,botName: String) = 
     db withTransaction {
       sql("insert into bots (creator_id, name) values (?,?)")apply(
         Some(User.currentUserId.get.toInt), Some(botName))
+      
+      val botId = sql("select max(id) from bots")apply()
+      sql("insert into tourn_bots (tourn_id, bot_id) values (?,?)")apply(
+        Some(tournamentId), botId)
     }
   
   def addTournament(gameId: Int, name: String, password: String) = 
