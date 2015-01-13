@@ -3,4 +3,5 @@ To run it:
 
 > ~; container:start; container:reload /
 
-***** Wrong display on tournament.html ******
+***** Need to fix *****
+* display on tournament.html
