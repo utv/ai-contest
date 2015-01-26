@@ -18,7 +18,7 @@ object Db {
 
   def addBot(tournamentId: Int,botName: String) = 
     db withTransaction {
-      sql("insert into bots (creator_id, name) values (?,?)")apply(
+      sql("insert into bots (owner_id, name) values (?,?)")apply(
         Some(User.currentUserId.get.toInt), Some(botName))
       
       val botId = sql("select max(id) from bots")apply()
@@ -28,8 +28,11 @@ object Db {
   
   def addTournament(gameId: Int, name: String, password: String) = 
     db withTransaction {
-      sql("insert into tournaments (creator_id, game_id, name, password) values (?,?,?,?)")apply(
+      sql("insert into tournaments (creator_id, game_id, name, password, start_date) values (?,?,?,?,current_timestamp)")apply(
         Some(User.currentUserId.get.toInt), Some(gameId), Some(name), Some(password))
+      
+      val tournId = sql("select max(id) from tournaments")apply()
+      sql("insert into tourn_gameindex (tourn_id, gameid) values (?,?)")apply(tournId, Some(gameId))
     }
 
   def listGame = 
